@@ -6,18 +6,22 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.arjupta.kauth.R
 import com.arjupta.kauth.databinding.ActivitySignupBinding
 import com.arjupta.kauth.ui.home.HomeActivity
 import com.arjupta.kauth.util.startHomeActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import org.kodein.di.KodeinAware
+import org.kodein.di.android.kodein
 import org.kodein.di.generic.instance
+import org.kodein.di.android.x.kodein
 
-class SignupActivity : AppCompatActivity(), AuthListener, KodeinAware {
+class SignupActivity() : AppCompatActivity(), AuthListener, KodeinAware {
 
-    override val kodein by kodein()
+//    override val kodein: Kodein = TODO()
+
+        override val kodein by kodein()
     private val factory : AuthViewModelFactory by instance()
 
     private lateinit var viewModel: AuthViewModel
@@ -27,7 +31,7 @@ class SignupActivity : AppCompatActivity(), AuthListener, KodeinAware {
         setContentView(R.layout.activity_signup)
 
         val binding: ActivitySignupBinding = DataBindingUtil.setContentView(this, R.layout.activity_signup)
-        viewModel = ViewModelProviders.of(this, factory).get(AuthViewModel::class.java)
+        viewModel = ViewModelProvider(this, factory).get(AuthViewModel::class.java)
         binding.viewmodel = viewModel
 
         viewModel.authListener = this

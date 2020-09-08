@@ -96,19 +96,19 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="22dp"
-                        android:onClick="@{() -> viewmodel.signup()}"
+                        android:onClick="@{viewmodel::signup}"
                         android:background="#d67601"
                         android:text="Sign Up"
                         android:textAllCaps="false"
                         android:textColor="#fff"
                         android:textSize="18sp"/>
 
-                    <TextView
+                    <Button
                         android:id="@+id/text_view_register"
                         android:layout_gravity="center_horizontal"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                         android:textAlignment="center"
-                        android:onClick="@{(v) -> viewmodel.goToLogin(v)}"
+                        android:onClick="@{viewmodel::goToLogin}"
                         android:text="Already have an account.\nLogin Here"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -125,7 +125,8 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/user_profile_image_background"
                 android:elevation="4dp"
-                android:src="@drawable/ic_boy"/>
+                android:src="@drawable/ic_boy"
+                android:contentDescription="TODO" />
 
         </RelativeLayout>
 

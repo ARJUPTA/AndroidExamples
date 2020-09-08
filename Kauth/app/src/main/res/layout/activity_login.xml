@@ -63,7 +63,7 @@
                         android:id="@+id/text_email"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/ic_email"
+                        android:drawableStart="@drawable/ic_email"
                         android:drawablePadding="10dp"
                         android:singleLine="true"
                         android:text="@={viewmodel.email}"
@@ -85,7 +85,7 @@
                         android:singleLine="true"
                         android:text="@={viewmodel.password}"
                         android:id="@+id/edit_text_password"
-                        android:drawableLeft="@drawable/ic_lock"
+                        android:drawableStart="@drawable/ic_lock"
                         android:hint="Password"
                         android:inputType="textPassword"/>
 
@@ -94,7 +94,7 @@
                         android:id="@+id/text_view_forget_password"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right"
+                        android:layout_gravity="end"
                         android:paddingTop="5dp"
                         android:text="Forgot Password?"/>
 
@@ -104,19 +104,19 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="22dp"
-                        android:onClick="@{() -> viewmodel.login()}"
+                        android:onClick="@{viewmodel::login}"
                         android:background="#d67601"
                         android:text="Log in"
                         android:textAllCaps="false"
                         android:textColor="#fff"
                         android:textSize="18sp"/>
 
-                    <TextView
+                    <Button
                         android:id="@+id/text_view_register"
                         android:layout_gravity="center_horizontal"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                         android:textAlignment="center"
-                        android:onClick="@{(v) -> viewmodel.goToSignup(v)}"
+                        android:onClick="@{viewmodel::goToSignup}"
                         android:text="Don't have an account.\nRegister Here"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -133,7 +133,8 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/user_profile_image_background"
                 android:elevation="4dp"
-                android:src="@drawable/ic_boy"/>
+                android:src="@drawable/ic_boy"
+                android:contentDescription="TODO" />
 
         </RelativeLayout>
 

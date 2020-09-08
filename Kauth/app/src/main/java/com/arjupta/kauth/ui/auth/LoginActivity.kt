@@ -5,15 +5,17 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.arjupta.kauth.R
 import com.arjupta.kauth.databinding.ActivityLoginBinding
 import com.arjupta.kauth.util.startHomeActivity
 import kotlinx.android.synthetic.main.activity_login.*
+import org.kodein.di.android.x.kodein
 import org.kodein.di.KodeinAware
+import org.kodein.di.android.kodein
 import org.kodein.di.generic.instance
 
-class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
+class LoginActivity() : AppCompatActivity(), AuthListener, KodeinAware {
 
     override val kodein by kodein()
     private val factory : AuthViewModelFactory by instance()
@@ -25,7 +27,7 @@ class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
         super.onCreate(savedInstanceState)
 
         val binding: ActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
-        viewModel = ViewModelProviders.of(this, factory).get(AuthViewModel::class.java)
+        viewModel = ViewModelProvider(this, factory).get(AuthViewModel::class.java)
         binding.viewmodel = viewModel
 
         viewModel.authListener = this
@@ -47,8 +49,8 @@ class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
 
     override fun onStart() {
         super.onStart()
-        viewModel.user?.let {
-            startHomeActivity()
-        }
+//        viewModel.user?.let {
+//            startHomeActivity()
+//        }
     }
 }

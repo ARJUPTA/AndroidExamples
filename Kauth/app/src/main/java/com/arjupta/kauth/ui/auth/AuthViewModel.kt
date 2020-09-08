@@ -27,7 +27,7 @@ class AuthViewModel (
     }
 
     //function to perform login
-    fun login() {
+    fun login(view : View) {
 
         //validating email and password
         if (email.isNullOrEmpty() || password.isNullOrEmpty()) {
@@ -52,7 +52,7 @@ class AuthViewModel (
         disposables.add(disposable)
     }
 
-    fun signup() {
+    fun signup(view : View) {
         if (email.isNullOrEmpty() || password.isNullOrEmpty()) {
             authListener?.onFailure("Please input all values")
             return
