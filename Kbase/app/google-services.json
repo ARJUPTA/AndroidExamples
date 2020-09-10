@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "148467774192",
+    "firebase_url": "https://kotlin-apps.firebaseio.com",
+    "project_id": "kotlin-apps",
+    "storage_bucket": "kotlin-apps.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148467774192:android:3c14d6a3137b75a2d40835",
+        "android_client_info": {
+          "package_name": "com.arjupta.Kbase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148467774192-hv665668qhmoeog2h7piprv2el8f7lo1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANl5p3_oqi4ByjLlI40Vl9wnZzqGslHTU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148467774192-hv665668qhmoeog2h7piprv2el8f7lo1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148467774192:android:12933762e6b3ac9ad40835",
+        "android_client_info": {
+          "package_name": "com.arjupta.kauth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148467774192-9v2o7u93ik3o0u01u2vh41pe4dikvslp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.arjupta.kauth",
+            "certificate_hash": "386bd75f71d1d82c782e2a61b626f948a381fb7c"
+          }
+        },
+        {
+          "client_id": "148467774192-hv665668qhmoeog2h7piprv2el8f7lo1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANl5p3_oqi4ByjLlI40Vl9wnZzqGslHTU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148467774192-hv665668qhmoeog2h7piprv2el8f7lo1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
