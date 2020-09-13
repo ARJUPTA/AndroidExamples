@@ -7,5 +7,5 @@ class FirebaseSource {
         FirebaseFirestore.getInstance()
     }
 
-    fun getData()
+//    fun getData()
 }

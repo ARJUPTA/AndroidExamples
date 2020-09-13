@@ -71,6 +71,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148467774192:android:29aaced27ceb2040d40835",
+        "android_client_info": {
+          "package_name": "com.arjupta.kbase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148467774192-hv665668qhmoeog2h7piprv2el8f7lo1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANl5p3_oqi4ByjLlI40Vl9wnZzqGslHTU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148467774192-hv665668qhmoeog2h7piprv2el8f7lo1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"
