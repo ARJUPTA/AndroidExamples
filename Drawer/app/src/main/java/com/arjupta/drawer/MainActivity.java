@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     Toolbar toolbar;
-    private CharSequence mDrawerTitle;
     private CharSequence mTitle;
     ActionBarDrawerToggle mDrawerToggle;
 
@@ -28,18 +27,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mTitle = mDrawerTitle = getTitle();
+        mTitle = getTitle();
         mNavigationDrawerItemTitles= getResources().getStringArray(R.array.navigation_drawer_items_array);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
         setupToolbar();
 
-        DataModel[] drawerItem = new DataModel[3];
+        DataModel[] drawerItem = new DataModel[6];
 
-        drawerItem[0] = new DataModel(R.drawable.ic_launcher_foreground, "Connect");
-        drawerItem[1] = new DataModel(R.drawable.ic_launcher_foreground, "Fixtures");
-        drawerItem[2] = new DataModel(R.drawable.ic_launcher_foreground, "Table");
+        drawerItem[0] = new DataModel(R.drawable.ic_launcher_foreground, "");
+        drawerItem[1] = new DataModel(R.drawable.ic_baseline_star_24, "Profile");
+        drawerItem[2] = new DataModel(R.drawable.ic_baseline_star_24, "Notice");
+        drawerItem[3] = new DataModel(R.drawable.ic_baseline_star_24, "Download");
+        drawerItem[4] = new DataModel(R.drawable.ic_baseline_star_24, "Gallery");
+        drawerItem[5] = new DataModel(R.drawable.ic_baseline_star_24, "Rate Us");
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setHomeButtonEnabled(true);
 
@@ -47,18 +49,15 @@ public class MainActivity extends AppCompatActivity {
         mDrawerList.setAdapter(adapter);
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
         setupDrawerToggle();
-
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
-
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             selectItem(position);
         }
-
     }
 
     private void selectItem(int position) {
@@ -67,12 +66,14 @@ public class MainActivity extends AppCompatActivity {
 
         switch (position) {
             case 0:
-                fragment = new ConnectFragment();
                 break;
             case 1:
-                fragment = new ConnectFragment();//new FixturesFragment();
+                fragment = new ConnectFragment();
                 break;
             case 2:
+                fragment = new ConnectFragment();//new FixturesFragment();
+                break;
+            case 3:
                 fragment = new ConnectFragment();//new TableFragment();
                 break;
 
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (fragment != null) {
             FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).addToBackStack("TAG").commit();
 
             mDrawerList.setItemChecked(position, true);
             mDrawerList.setSelection(position);

@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">Drawer</string>
     <string-array name="navigation_drawer_items_array">
-        <item>Connect</item>
-        <item>Fixtures</item>
-        <item>Table</item>
+        <item>Profile</item>
+        <item>Notice</item>
+        <item>Download</item>
+        <item>Gallery</item>
+        <item>Rate Us</item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
