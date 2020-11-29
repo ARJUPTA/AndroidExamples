@@ -1,6 +1,7 @@
 package com.arjupta.customauth.network;
 
 import com.arjupta.customauth.model.Profile;
+import com.arjupta.customauth.network.ApiConfig;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 //import com.arjupta.customauth.network.response.ProfileListResponse;

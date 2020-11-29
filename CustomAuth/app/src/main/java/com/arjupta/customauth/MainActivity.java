@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import com.arjupta.customauth.network.ApiConfig;
 import com.arjupta.customauth.network.ApiManager;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -17,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -27,75 +31,83 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     static final int ADD_PROFILE = 1000;
+    String TAG = "LogTag";
+    String hash = "";
 //
 //    @Bind(R.id.rv_profile)
 //    RecyclerView rvProfile;
 //
 //    private ProfileAdapter profileAdapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-
-        Call<String> addProfileCallback = ApiManager.getApiClient()
-                .postProfile("bhart", "gupta");
+    public void onClick(View view){
+        EditText uid = findViewById(R.id.uid);
+        EditText pass = findViewById(R.id.pass);
+        hash = MD5(uid.getText()+ ApiConfig.key);
+        Log.d(TAG, "onStart: "+hash);
+        Call<String> addProfileCallback = ApiManager.getApiClient().postProfile(uid.getText().toString(), hash);
         addProfileCallback.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-
-                Toast.makeText(MainActivity.this,
-                        "onStart", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "onStart", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "onResponse: "+response.body());
                 if (response.isSuccessful()) {
 //                    Date currentTime = Calendar.getInstance().getTime();
                     String body = response.body().toString();
-                    FirebaseAuth.getInstance().signInWithCustomToken(body)
-                            .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                                @Override
-                                public void onSuccess(AuthResult authResult) {
-                                    Toast.makeText(MainActivity.this, authResult.toString(), Toast.LENGTH_SHORT).show();
-                                }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                                    Log.d("retrofit", "No User Found");
-                                }
-                            });
-
-
-                    Toast.makeText(MainActivity.this,
-                            body, Toast.LENGTH_SHORT).show();
-//                    Intent returnIntent = new Intent();
-//                    returnIntent.putExtra("id", profile.getId());
-//                    returnIntent.putExtra("name", name);
-//                    returnIntent.putExtra("contact_no", contactNo);
-//                    returnIntent.putExtra("email", email);
-//                    setResult(RESULT_OK, returnIntent);
-//                    finish();
+//                    FirebaseAuth.getInstance().signInWithCustomToken(body)
+//                            .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+//                                @Override
+//                                public void onSuccess(AuthResult authResult) {
+//                                    Toast.makeText(MainActivity.this, authResult.toString(), Toast.LENGTH_SHORT).show();
+//                                }
+//                            })
+//                            .addOnFailureListener(new OnFailureListener() {
+//                                @Override
+//                                public void onFailure(@NonNull Exception e) {
+//                                    Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+//                                    Log.d(TAG, "No User Found");
+//                                }
+//                            });
+                    Toast.makeText(MainActivity.this, body, Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(MainActivity.this,
-                            "Failed to fetch", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Failed to fetch", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(MainActivity.this,
-                        "failed with " + t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.d("retrofit", "onFailure: " + t.getMessage());
+                Toast.makeText(MainActivity.this, "failed with " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "onFailure: " + t.getMessage());
                 t.printStackTrace();
             }
         });
     }
+
+    public String MD5(String md5) {
+        try {
+            java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+            byte[] array = md.digest(md5.getBytes("UTF-8"));
+            StringBuffer sb = new StringBuffer();
+            for (int i = 0; i < array.length; ++i) {
+                sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
+            }
+            return sb.toString();
+        } catch (java.security.NoSuchAlgorithmException e) {
+            Log.d(TAG, "MD5: "+e.getMessage());
+            Toast.makeText(MainActivity.this,"Hash "+e.getMessage(),Toast.LENGTH_LONG).show();
+        } catch(UnsupportedEncodingException ex){
+            Log.d(TAG, "MD5: "+ex.getMessage());
+            Toast.makeText(MainActivity.this,"Hash "+ex.getMessage(),Toast.LENGTH_LONG).show();
+        }
+        return "pass";
+    }
+
     public String writeJSON() {
         JSONObject object = new JSONObject();
         Date currentTime = Calendar.getInstance().getTime();
