@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">About Me</string>
+    <string name="name">Arjun Gupta</string>
+    <string name="yellow_star">yellow star</string>
+    <string name="scroll_view_text">
+        Hello this is About-Me App and this was made as a second project
+        under the Kotlin learning program offered by Google. This project
+        basically deals with the layout editing and the view binding
+        associated with it. This project is helpful for learning such
+        things easily and in a guided way. Let me tell you what all things
+        have I learnt here in brief . \n\n
+        Hello this is About-Me App and this was made as a second project
+        under the Kotlin learning program offered by Google. This project
+        basically deals with the layout editing and the view binding
+        associated with it. This project is helpful for learning such
+        things easily and in a guided way. Let me tell you what all things
+        have I learnt here in brief . \n\n
+        Hello this is About-Me App and this was made as a second project
+        under the Kotlin learning program offered by Google. This project
+        basically deals with the layout editing and the view binding
+        associated with it. This project is helpful for learning such
+        things easily and in a guided way. Let me tell you what all things
+        have I learnt here in brief .     </string>
+    <string name="what_is_your_nickname">What is your nickname</string>
+    <string name="done">Done</string>
 </resources>
