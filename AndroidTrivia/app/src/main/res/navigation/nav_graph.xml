@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/tileFragment">
+
+    <fragment
+        android:id="@+id/tileFragment"
+        android:name="com.arjupta.androidtrivia.TileFragment"
+        tools:layout="@layout/fragment_title"
+        android:label="TileFragment" >
+        <action
+            android:id="@+id/action_tileFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.arjupta.androidtrivia.navigation.GameFragment"
+        tools:layout="@layout/fragment_game"
+        android:label="GameFragment" />
+</navigation>
