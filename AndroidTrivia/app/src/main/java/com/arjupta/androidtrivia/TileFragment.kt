@@ -15,10 +15,11 @@ class TileFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding : FragmentTitleBinding = DataBindingUtil.inflate(
                 inflater,R.layout.fragment_title,container,false)
-        binding.playButton.setOnClickListener{
+        binding.playButton.setOnClickListener{view->
 //           method-1: Navigation.findNavController(it).navigate(R.id.action_tileFragment_to_gameFragment)
 //           method-2: it.findNavController().navigate(R.id.action_tileFragment_to_gameFragment)
-           /*method-3*/ Navigation.createNavigateOnClickListener(R.id.action_tileFragment_to_gameFragment)
+//           method-3: Navigation.createNavigateOnClickListener(R.id.action_tileFragment_to_gameFragment)
+            view.findNavController().navigate(R.id.action_tileFragment_to_gameFragment)
         }
         return binding.root
     }
