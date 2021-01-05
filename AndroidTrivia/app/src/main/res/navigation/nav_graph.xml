@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/tileFragment">
+    android:label="@string/title_about_trivia">
 
     <fragment
         android:id="@+id/tileFragment"
         android:name="com.arjupta.androidtrivia.TileFragment"
-        tools:layout="@layout/fragment_title"
-        android:label="TileFragment" >
+        android:label="TileFragment"
+        tools:layout="@layout/fragment_title">
         <action
             android:id="@+id/action_tileFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
@@ -17,8 +17,8 @@
     <fragment
         android:id="@+id/gameFragment"
         android:name="com.arjupta.androidtrivia.navigation.GameFragment"
-        tools:layout="@layout/fragment_game"
-        android:label="GameFragment" >
+        android:label="GameFragment"
+        tools:layout="@layout/fragment_game">
         <action
             android:id="@+id/action_gameFragment_to_gameOverFragment2"
             app:destination="@id/gameOverFragment2"
@@ -34,7 +34,7 @@
         android:id="@+id/gameOverFragment2"
         android:name="com.arjupta.androidtrivia.navigation.GameOverFragment"
         android:label="fragment_game_over"
-        tools:layout="@layout/fragment_game_over" >
+        tools:layout="@layout/fragment_game_over">
         <action
             android:id="@+id/action_gameOverFragment2_to_gameFragment"
             app:destination="@id/gameFragment"
@@ -44,10 +44,15 @@
         android:id="@+id/gameWonFragment"
         android:name="com.arjupta.androidtrivia.navigation.GameWonFragment"
         android:label="fragment_game_won"
-        tools:layout="@layout/fragment_game_won" >
+        tools:layout="@layout/fragment_game_won">
         <action
             android:id="@+id/action_gameWonFragment_to_gameFragment"
             app:destination="@id/gameFragment"
             app:popUpTo="@id/tileFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.arjupta.androidtrivia.navigation.AboutFragment"
+        android:label="@string/title_about_trivia"
+        tools:layout="@layout/fragment_about" />
 </navigation>
