@@ -3,6 +3,7 @@ package com.arjupta.daggerdemo.di;
 import android.app.Application;
 
 import com.arjupta.daggerdemo.BaseApplication;
+import com.arjupta.daggerdemo.SessionManager;
 
 import javax.inject.Singleton;
 
@@ -21,6 +22,9 @@ import dagger.android.support.AndroidSupportInjectionModule;
         }
 )
 public interface AppComponent extends AndroidInjector<BaseApplication> {
+
+    SessionManager sessionManager();
+
     @Component.Builder
     interface Builder {
         @BindsInstance
