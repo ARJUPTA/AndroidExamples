@@ -1,10 +1,14 @@
-package com.arjupta.daggerdemo;
+package com.arjupta.daggerdemo.ui.auth;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 
+import androidx.lifecycle.ViewModelProviders;
+
+import com.arjupta.daggerdemo.R;
+import com.arjupta.daggerdemo.viewmodels.ViewModelProviderFactory;
 import com.bumptech.glide.RequestManager;
 
 import static com.arjupta.daggerdemo.BaseApplication.TAG;
@@ -21,10 +25,16 @@ public class AuthActivity extends DaggerAppCompatActivity {
     @Inject
     RequestManager requestManager;
 
+    @Inject
+    ViewModelProviderFactory providerFactory;
+
+    private AuthViewModel viewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
+        viewModel = ViewModelProviders.of(this,providerFactory).get(AuthViewModel.class);
         setLogo();
     }
 

@@ -6,7 +6,7 @@ import dagger.android.AndroidInjector;
 import dagger.android.support.DaggerApplication;
 
 public class BaseApplication extends DaggerApplication {
-    public static final String TAG = "App";
+    public static final String TAG = "DaggerDemo";
     @Override
     protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
         return DaggerAppComponent.builder().application(this).build();
