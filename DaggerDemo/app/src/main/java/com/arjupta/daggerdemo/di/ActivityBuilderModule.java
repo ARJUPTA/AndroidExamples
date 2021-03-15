@@ -2,7 +2,10 @@ package com.arjupta.daggerdemo.di;
 
 import com.arjupta.daggerdemo.di.auth.AuthModule;
 import com.arjupta.daggerdemo.di.auth.AuthViewModelModule;
+import com.arjupta.daggerdemo.di.main.MainFragmentsBuilderModule;
+import com.arjupta.daggerdemo.di.main.MainViewModelsModule;
 import com.arjupta.daggerdemo.ui.auth.AuthActivity;
+import com.arjupta.daggerdemo.ui.main.MainActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -16,4 +19,12 @@ public abstract class ActivityBuilderModule {
             }
     )
     public abstract AuthActivity contributeAuthActivity();
+
+    @ContributesAndroidInjector(
+            modules = {
+                    MainViewModelsModule.class,
+                    MainFragmentsBuilderModule.class
+            }
+    )
+    public abstract MainActivity contributeMainActivity();
 }

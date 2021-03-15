@@ -1,5 +1,6 @@
 package com.arjupta.daggerdemo.ui.auth;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -15,6 +16,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.arjupta.daggerdemo.R;
 import com.arjupta.daggerdemo.model.User;
+import com.arjupta.daggerdemo.ui.main.MainActivity;
 import com.arjupta.daggerdemo.viewmodels.ViewModelProviderFactory;
 import com.bumptech.glide.RequestManager;
 
@@ -72,6 +74,7 @@ public class AuthActivity extends DaggerAppCompatActivity implements View.OnClic
                         case AUTHENTICATED: {
                             showProgress(false);
                             Toast.makeText(AuthActivity.this,"Login Successful",Toast.LENGTH_SHORT).show();
+                            navigateToMainActivity();
                             break;
                         }
                         case ERROR: {
@@ -87,6 +90,12 @@ public class AuthActivity extends DaggerAppCompatActivity implements View.OnClic
                 }
             }
         });
+    }
+
+    private void navigateToMainActivity(){
+        Intent intent =  new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void showProgress(boolean isVisible){
