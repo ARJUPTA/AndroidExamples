@@ -1,9 +1,11 @@
 package com.arjupta.daggerdemo.di;
 
 import com.arjupta.daggerdemo.di.auth.AuthModule;
+import com.arjupta.daggerdemo.di.auth.AuthScope;
 import com.arjupta.daggerdemo.di.auth.AuthViewModelModule;
 import com.arjupta.daggerdemo.di.main.MainFragmentsBuilderModule;
 import com.arjupta.daggerdemo.di.main.MainModule;
+import com.arjupta.daggerdemo.di.main.MainScope;
 import com.arjupta.daggerdemo.di.main.MainViewModelsModule;
 import com.arjupta.daggerdemo.ui.auth.AuthActivity;
 import com.arjupta.daggerdemo.ui.main.MainActivity;
@@ -13,6 +15,7 @@ import dagger.android.ContributesAndroidInjector;
 
 @Module
 public abstract class ActivityBuilderModule {
+    @AuthScope
     @ContributesAndroidInjector(
             modules = {
                     AuthViewModelModule.class,
@@ -21,6 +24,7 @@ public abstract class ActivityBuilderModule {
     )
     public abstract AuthActivity contributeAuthActivity();
 
+    @MainScope
     @ContributesAndroidInjector(
             modules = {
                     MainViewModelsModule.class,
